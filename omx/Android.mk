@@ -9,6 +9,7 @@ LOCAL_SRC_FILES := \
 	SoftFFmpegVideo.cpp
 
 ifeq ($(BOARD_USES_QCOM_HARDWARE),true)
+LOCAL_C_INCLUDES += \
 	$(LOCAL_PATH)/../include \
 	$(LOCAL_PATH)/.. \
 	$(TOP)/frameworks/native-caf/include/media/hardware \
