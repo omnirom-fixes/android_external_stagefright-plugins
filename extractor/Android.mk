@@ -6,11 +6,19 @@ include external/ffmpeg/android/ffmpeg.mk
 LOCAL_SRC_FILES := \
 	FFmpegExtractor.cpp
 
+ifeq ($(BOARD_USES_QCOM_HARDWARE),true)
+LOCAL_C_INCLUDES += \
+	$(LOCAL_PATH)/.. \
+	$(TOP)/frameworks/native-caf/include/media/openmax \
+	$(TOP)/frameworks/av-caf/include \
+	$(TOP)/frameworks/av-caf/media/libstagefright
+else
 LOCAL_C_INCLUDES += \
 	$(LOCAL_PATH)/.. \
 	$(TOP)/frameworks/native/include/media/openmax \
 	$(TOP)/frameworks/av/include \
 	$(TOP)/frameworks/av/media/libstagefright
+endif
 
 LOCAL_SHARED_LIBRARIES := \
 	libutils          \

@@ -9,10 +9,17 @@ LOCAL_SRC_FILES := \
 	ffmpeg_cmdutils.c \
 	codec_utils.cpp
 
+ifeq ($(BOARD_USES_QCOM_HARDWARE),true)
+LOCAL_C_INCLUDES += \
+	$(TOP)/frameworks/native-caf/include/media/openmax \
+	$(TOP)/frameworks/av-caf/include \
+	$(TOP)/frameworks/av-caf/media/libstagefright
+else
 LOCAL_C_INCLUDES += \
 	$(TOP)/frameworks/native/include/media/openmax \
 	$(TOP)/frameworks/av/include \
 	$(TOP)/frameworks/av/media/libstagefright
+endif
 
 LOCAL_SHARED_LIBRARIES := \
 	libavcodec \

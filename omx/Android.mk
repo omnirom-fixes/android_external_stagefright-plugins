@@ -8,6 +8,15 @@ LOCAL_SRC_FILES := \
 	SoftFFmpegAudio.cpp \
 	SoftFFmpegVideo.cpp
 
+ifeq ($(BOARD_USES_QCOM_HARDWARE),true)
+	$(LOCAL_PATH)/../include \
+	$(LOCAL_PATH)/.. \
+	$(TOP)/frameworks/native-caf/include/media/hardware \
+	$(TOP)/frameworks/native-caf/include/media/openmax \
+	$(TOP)/frameworks/av-caf/include \
+	$(TOP)/frameworks/av-caf/media/libstagefright \
+	$(TOP)/frameworks/av-caf/media/libstagefright/include
+else
 LOCAL_C_INCLUDES += \
 	$(LOCAL_PATH)/../include \
 	$(LOCAL_PATH)/.. \
@@ -16,6 +25,7 @@ LOCAL_C_INCLUDES += \
 	$(TOP)/frameworks/av/include \
 	$(TOP)/frameworks/av/media/libstagefright \
 	$(TOP)/frameworks/av/media/libstagefright/include
+endif
 
 LOCAL_SHARED_LIBRARIES := \
 	libdl             \
